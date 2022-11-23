@@ -1,13 +1,12 @@
 <template>
-  <!-- Happy Coding -->
   <div class= "p-3" style= "max-width: 400px; margin: 50px auto; background: #234">
     
-    <!-- Calculator Result -->
+ 
     <div class= "w-full rounded m-1 p-3 text-right lead font-weight-bold text-white bg-vue-dark">
       {{ calculatorValue || 0 }}
     </div>
 
-    <!-- Calculator buttons -->
+  
     <div class= "row no-gutters">
       <div class= "col-3" v-for="n in calculatorElements" :key="n">
         <div class= "lead text-white text-center m-1 py-3 bg-vue-dark rounded hover-class"
@@ -36,25 +35,25 @@ export default {
   },
   methods: {
     action(n){
-      /* Append value */
+    
       if(!isNaN(n) || n === '.'){
         this.calculatorValue += n + '';
       }
-      /* Clear value */
+
       if(n === 'C'){
         this.calculatorValue = '';
       }
-      /* Percentage */
+   
       if(n === '%'){
         this.calculatorValue = this.calculatorValue / 100 + '';
       }
-      /* Operators */
+
       if(['/','*','-','+'].includes(n)){
         this.operator = n;
         this.previousCalculatorValue = this.calculatorValue;
         this.calculatorValue = '';
       }
-      /* Calculate result using the eval function */
+   
       if(n === '='){
         this.calculatorValue = eval(
           this.previousCalculatorValue + this.operator + this.calculatorValue
